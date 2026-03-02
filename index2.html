@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lokakarya Pengembangan Portal BIPA Daring 2026</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+.page-section{
+display:none;
+animation:fade .35s ease;
+}
+
+.page-section.active{
+display:block;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.module-card{
+transition:.25s;
+}
+
+.module-card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.nav-active{
+background:#1e40af;
+}
+
+#pdf-modal{
+display:none;
+}
+
+#pdf-modal.active{
+display:flex;
+}
+
+</style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<!-- NAVBAR -->
+
+<nav class="bg-blue-900 text-white shadow-lg sticky top-0 z-50">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="flex justify-between items-center h-16">
+
+<div class="flex items-center gap-3">
+
+<div class="bg-white text-blue-900 px-2 py-1 rounded font-bold text-xs">
+BIPA
+</div>
+
+<span class="font-semibold tracking-wide text-sm">
+Lokakarya Portal BIPA Daring 2026
+</span>
+
+</div>
+
+<div class="hidden md:flex gap-2">
+
+<button onclick="showPage('beranda',this)" class="nav-btn px-3 py-2 text-sm rounded hover:bg-blue-800">Beranda</button>
+
+<button onclick="showPage('tujuan',this)" class="nav-btn px-3 py-2 text-sm rounded hover:bg-blue-800">Tujuan</button>
+
+<button onclick="showPage('modul',this)" class="nav-btn px-3 py-2 text-sm rounded hover:bg-blue-800">Unggahan</button>
+
+<button onclick="showPage('jadwal',this)" class="nav-btn px-3 py-2 text-sm rounded hover:bg-blue-800">Jadwal</button>
+
+<button onclick="openPdfModal('https://drive.google.com/file/d/1KRvEZbUEcJLAlBENkhyB_cqsqaNRKAlg/preview')" class="px-3 py-2 text-sm rounded bg-orange-500 hover:bg-orange-600 font-semibold">
+Pembagian Tugas
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- MODAL PDF -->
+
+<div id="pdf-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 items-center justify-center p-6">
+
+<div class="bg-white w-full max-w-5xl h-full rounded-lg shadow-xl flex flex-col overflow-hidden">
+
+<div class="flex justify-between items-center p-3 border-b">
+
+<div class="text-sm font-semibold">
+Pratinjau Dokumen
+</div>
+
+<button onclick="closePdfModal()" class="text-red-500 font-bold">
+✕
+</button>
+
+</div>
+
+<iframe id="pdf-iframe" class="flex-1"></iframe>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+<!-- BERANDA -->
+
+<section id="beranda" class="page-section active">
+
+<div class="grid md:grid-cols-2 gap-10 items-center">
+
+<div>
+
+<h1 class="text-3xl font-bold text-blue-900 mb-4">
+Lokakarya Pengembangan Portal BIPA Daring
+</h1>
+
+<p class="text-gray-600 leading-relaxed mb-6">
+
+Pengembangan portal BIPA Daring dilakukan oleh Badan Bahasa untuk meningkatkan
+layanan pembelajaran Bahasa Indonesia bagi Penutur Asing (BIPA) secara daring
+baik di dalam maupun di luar negeri.
+
+</p>
+
+<div class="flex gap-3">
+
+<button onclick="showPage('tujuan',this)" class="bg-blue-800 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-900">
+Tujuan Kegiatan
+</button>
+
+<button onclick="showPage('modul',this)" class="bg-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-green-700">
+Unggah Materi
+</button>
+
+</div>
+
+</div>
+
+<div class="bg-white shadow-md rounded-xl p-6 border">
+
+<div class="text-xs text-gray-500 uppercase mb-2">
+Waktu Kegiatan
+</div>
+
+<div class="text-xl font-bold text-blue-900">
+3 — 6 Maret 2026
+</div>
+
+<div class="text-sm text-gray-600">
+Hotel Wyndham Jakarta
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TUJUAN -->
+
+<section id="tujuan" class="page-section">
+
+<h2 class="text-2xl font-bold mb-6">Tujuan Kegiatan</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Rancangan Submodul Belajar BIPA Mandiri
+</div>
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Rancangan Koneksi Metadata Korpus
+</div>
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Rancangan Penginputan Data APPBIPA
+</div>
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Rancangan BIPA Daring Mobile
+</div>
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Profil Pemenang Modul FHI
+</div>
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Modul Bakti BIPA Ramah Pengguna
+</div>
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Pemutakhiran Kode Batang Suara
+</div>
+
+<div class="module-card bg-white p-5 rounded-lg border">
+Validasi Bahan Ajar
+</div>
+
+</div>
+
+</section>
+
+<!-- MODUL -->
+
+<section id="modul" class="page-section">
+
+<h2 class="text-2xl font-bold mb-6">Unggahan Notula dan Materi</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+<div class="module-card bg-white p-6 rounded-lg border">
+
+<h3 class="font-bold mb-2">
+Unggahan Hasil Diskusi
+</h3>
+
+<p class="text-sm text-gray-600 mb-4">
+Unggah hasil kerja kelompok ke Google Drive panitia.
+</p>
+
+<a href="https://drive.google.com/drive/folders/1dafB5L4RYtplQPlAyIapcXoOHLey8q-2" target="_blank"
+class="block text-center bg-blue-700 text-white py-2 rounded hover:bg-blue-800 text-sm">
+
+Unggah Dokumen
+
+</a>
+
+</div>
+
+<div class="module-card bg-white p-6 rounded-lg border">
+
+<h3 class="font-bold mb-3">
+Submodul BIPA Mandiri
+</h3>
+
+<div class="flex gap-2">
+
+<a href="#" class="flex-1 text-center bg-gray-200 py-2 rounded text-xs">
+Notula
+</a>
+
+<a href="#" class="flex-1 text-center bg-gray-200 py-2 rounded text-xs">
+Materi
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- JADWAL -->
+
+<section id="jadwal" class="page-section">
+
+<h2 class="text-2xl font-bold mb-6">Jadwal Kegiatan</h2>
+
+<div class="bg-white rounded-lg border shadow-sm overflow-hidden">
+
+<table class="w-full text-sm">
+
+<thead class="bg-blue-900 text-white">
+
+<tr>
+
+<th class="p-3 text-left">Waktu</th>
+<th class="p-3 text-left">Kegiatan</th>
+<th class="p-3 text-left">Narasumber</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="border-t">
+
+<td class="p-3 font-semibold">12.00 — 13.00</td>
+<td class="p-3">Registrasi Peserta</td>
+<td class="p-3">Panitia</td>
+
+</tr>
+
+<tr class="border-t">
+
+<td class="p-3 font-semibold">13.00 — 14.00</td>
+<td class="p-3">Rancangan Teknis APPBIPA</td>
+<td class="p-3">Muhamad Taufiq</td>
+
+</tr>
+
+<tr class="border-t">
+
+<td class="p-3 font-semibold">14.00 — 15.00</td>
+<td class="p-3">Clearance BIPA Daring 2026</td>
+<td class="p-3">Muhammad Totok Prabowo</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="bg-gray-100 border-t mt-16">
+
+<div class="max-w-7xl mx-auto px-6 py-6 text-center text-xs text-gray-600">
+
+© 2026 Badan Pengembangan dan Pembinaan Bahasa  
+Lokakarya Pengembangan Portal BIPA Daring
+
+</div>
+
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+function showPage(id,btn){
+
+document.querySelectorAll('.page-section')
+.forEach(s=>s.classList.remove('active'));
+
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('.nav-btn')
+.forEach(b=>b.classList.remove('nav-active'));
+
+if(btn) btn.classList.add('nav-active');
+
+window.scrollTo({top:0,behavior:'smooth'});
+
+}
+
+function openPdfModal(url){
+
+document.getElementById('pdf-modal').classList.add('active');
+document.getElementById('pdf-iframe').src=url;
+
+}
+
+function closePdfModal(){
+
+document.getElementById('pdf-modal').classList.remove('active');
+document.getElementById('pdf-iframe').src="";
+
+}
+
+</script>
+
+</body>
+</html>
